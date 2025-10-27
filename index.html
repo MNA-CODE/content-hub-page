@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Content Hub | Queen Mary University of London</title>
+  <style>
+    :root{
+      --qmul-blue:#0D3273;
+      --qmul-gold:#FFD100;
+      --qmul-jade:#00B2A9;
+      --qmul-purple:#6B2C91;
+      --qmul-orange:#E87722;
+      --qmul-grey-50:#F8F9FA;
+      --qmul-grey-700:#495057;
+      --qmul-grey-900:#212529;
+    }
+
+    /* reset / base */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color:var(--qmul-grey-900);
+      line-height:1.6;
+      background:#fff;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display:block; max-width:100%; }
+
+    /* Header */
+    .header{
+      background:var(--qmul-blue);
+      color:#fff;
+      padding:.75rem 1.25rem;
+      position:sticky;
+      top:0;
+      z-index:1200;
+      box-shadow:0 2px 4px rgba(0,0,0,.08);
+    }
+    .header-content{
+      max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    }
+    .logo{display:flex;flex-direction:column;color:#fff;font-weight:700;font-size:1.05rem;line-height:1}
+    nav .nav-menu{display:flex;gap:1.25rem;list-style:none;}
+    .nav-menu a{color:#fff;font-weight:500;font-size:.95rem}
+    .nav-menu a:hover{color:var(--qmul-gold)}
+
+    /* Hero */
+    .hero{background:var(--qmul-blue);color:#fff;padding:2.5rem 1.25rem}
+    .hero-content{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 460px;gap:2rem;align-items:center}
+    .hero-text h1{font-size:2.25rem;font-weight:700;margin-bottom:.5rem;line-height:1.1}
+    .hero-text p{font-size:1rem;opacity:.95;margin-bottom:1rem}
+    .search-box {
+    display: flex;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+    max-width: 720px; /* Add this line here */
+    }
+    .search-box input{flex:1;padding:.85rem 1rem;border:0;font-size:.95rem}
+    .search-box button{background:var(--qmul-gold);color:var(--qmul-blue);border:0;padding:.75rem 1.25rem;cursor:pointer;font-weight:600}
+    .search-box button:hover{filter:brightness(.98)}
+
+    /* Featured card */
+    .featured-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 8px 28px rgba(13,50,115,.08);display:flex;flex-direction:column}
+    .featured-image{height:220px;background:#eaeaea center/cover no-repeat}
+    .featured-content{padding:1.25rem 1.25rem;display:flex;flex-direction:column;gap:.6rem}
+    .featured-content h3{margin-top:.2rem;color:var(--qmul-jade);font-size:1.15rem;font-weight:700}
+    .featured-content p{color:#333;font-size:.96rem;margin-bottom:.6rem}
+    .featured-meta{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:auto}
+
+    /* badges - specific colors */
+    .badge{display:inline-block;padding:.25rem .6rem;border-radius:4px;font-size:.78rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#fff}
+    .badge.jade{background:var(--qmul-jade)}
+    .badge.purple{background:var(--qmul-purple)}
+    .badge.orange{background:var(--qmul-orange)}
+    .badge.news{background:var(--qmul-blue)} /* News badge uses QMUL blue */
+    .badge.research{background:var(--qmul-jade)}
+    /* school badges hidden visually (kept for DOM/filtering) */
+    .badge.school{display:none !important;visibility:hidden;opacity:0;height:0;padding:0;margin:0;border:0}
+
+    /* --- FILTERS (HORIZONTAL + CHECKBOXES) --- */
+    .filters-section{
+      background: #fff; /* White background */
+      padding:1.5rem 1.25rem;
+      border-bottom:1px solid #dee2e6;
+    }
+    .filters-content{
+      max-width:1400px;
+      margin:0 auto;
+    }
+    .filters-container {
+      display: flex;
+      flex-wrap: wrap; /* Allow wrapping on small screens */
+      align-items: center;
+      gap: .75rem 1rem; /* row-gap column-gap */
+    }
+    /* Style individual filter groups (dropdowns and accordions) */
+    .filters-container .filter-group,
+    .filters-container .filter-accordion-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 180px; /* Give accordions a min width */
+      position: relative; /* Needed for absolute positioned checkbox list */
+    }
+    .filters-container label {
+      font-weight: 600;
+      color: var(--qmul-grey-900);
+      font-size: .95rem;
+      white-space: nowrap;
+    }
+    .filters-container select {
+      padding: .6rem .7rem;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      background: #fff;
+      font-size: .95rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 100%; /* Make select fill its container */
+      appearance: none; /* Allows custom arrow */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230D3273"><path d="M8 11L3 6h10z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.7rem center;
+      background-size: 0.65em auto;
+      padding-right: 2rem; /* Space for arrow */
+    }
+    
+    /* Accordion styles within horizontal layout */
+    .filter-accordion {
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      background: #fff;
+      width: 100%; /* Fill wrapper */
+    }
+    .filter-accordion summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: .6rem .7rem;
+      font-size: .95rem; /* Match select font size */
+      font-weight: 500; /* Match select font weight */
+      color: var(--qmul-grey-900);
+      cursor: pointer;
+      list-style: none; /* Hide default marker */
+    }
+    .filter-accordion summary::-webkit-details-marker { display: none; }
+    .filter-accordion summary::after {
+      content: ''; display: inline-block; width: 0; height: 0;
+      border-left: 5px solid transparent; border-right: 5px solid transparent;
+      border-top: 6px solid var(--qmul-blue); /* Arrow points down */
+      margin-left: .5rem; transition: transform 0.2s;
+    }
+    .filter-accordion[open] summary::after { transform: rotate(180deg); } /* Arrow points up */
+    
+    .checkbox-list-container {
+      position: absolute; /* Position list below the summary */
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: #fff;
+      border: 1px solid #ced4da;
+      border-top: none; /* Avoid double border */
+      border-radius: 0 0 6px 6px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      max-height: 200px; /* Increase max height */
+      overflow-y: auto;
+      padding: .5rem .75rem;
+      
+      /* Scrollbar styles */
+      scrollbar-width: thin; scrollbar-color: var(--qmul-blue) var(--qmul-grey-50);
+    }
+    .checkbox-list-container::-webkit-scrollbar { width: 8px; }
+    .checkbox-list-container::-webkit-scrollbar-track { background: var(--qmul-grey-50); border-radius: 4px; }
+    .checkbox-list-container::-webkit-scrollbar-thumb { background-color: var(--qmul-blue); border-radius: 4px; }
+    
+    .checkbox-item{ padding:.3rem 0; display:flex; align-items:center; gap:.5rem; }
+    
+    .filter-buttons{
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-left: 1rem; /* Add some space before buttons */
+    }
+    .btn-primary{
+      background:var(--qmul-blue);
+      color:#fff;
+      padding:.55rem 1.25rem; /* Increased padding */
+      border-radius:6px;
+      border:0;
+      cursor:pointer;
+      font-weight:700;
+      font-size: .95rem;
+    }
+    .btn-link {
+      background: none; border: none; color: var(--qmul-grey-700);
+      text-decoration: underline; cursor: pointer;
+      font-size: .95rem; font-weight: 600;
+    }
+    /* --- END FILTERS --- */
+
+    /* News grid */
+    .news-section{max-width:1400px;margin:0 auto;padding:2rem 1.25rem}
+    
+    /* --- SORTING CONTROLS --- */
+    .sorting-controls{
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+    .sorting-controls label { /* Reusing filter label styles */
+       font-weight: 600;
+       color: var(--qmul-grey-900);
+       font-size: .95rem;
+       white-space: nowrap;
+    }
+    .sorting-controls select { /* Reusing filter select styles */
+      padding: .6rem .7rem;
+      border: 1px solid #ced4da;
+      border-radius: 6px;
+      background: #fff;
+      font-size: .95rem;
+      font-weight: 500;
+      cursor: pointer;
+      appearance: none; /* Allows custom arrow */
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230D3273"><path d="M8 11L3 6h10z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 0.7rem center;
+      background-size: 0.65em auto;
+      padding-right: 2rem; /* Space for arrow */
+    }
+    /* --- END SORTING CONTROLS --- */
+    
+    .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem}
+    .news-card{background:#fff;border-radius:8px;border:1px solid #e9ecef;box-shadow:0 6px 18px rgba(0,0,0,.04);display:flex;flex-direction:column;overflow:hidden;transition:transform .22s,box-shadow .22s}
+    .news-card:hover{transform:translateY(-6px);box-shadow:0 18px 48px rgba(13,50,115,.12)}
+    .news-image{height:200px;background:#eaeaea center/cover no-repeat}
+    .news-content{padding:1rem 1rem 1.15rem;display:flex;flex-direction:column;gap:.5rem;flex-grow:1}
+    .news-content h3{color:var(--qmul-blue);font-size:1.05rem;font-weight:700;line-height:1.35}
+    .news-content p{color:var(--qmul-grey-700);font-size:.92rem;flex-grow:1}
+
+    /* metadata area (research + reading time) */
+    .article-meta{display:flex;align-items:center;gap:.75rem;font-size:.82rem;color:var(--qmul-grey-700);margin-top:auto; /* Pushes meta to bottom */ flex-wrap:wrap}
+    .meta-pill{display:inline-flex;align-items:center;gap:.45rem;padding:.25rem .6rem;border-radius:999px;background:rgba(0,0,0,.04);font-weight:600}
+    .meta-pill svg{width:14px;height:14px;display:block}
+
+    /* staff block */
+    .staff-profile{display:flex;align-items:center;gap:.75rem;margin-top:1rem;padding-top:1rem;border-top:1px solid #f0f0f0;color:var(--qmul-grey-700);font-size:.85rem}
+    .staff-thumb{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#d8d8d8 0,#e0e0e0 100%);background-size:cover;background-position:center;flex-shrink:0}
+    .staff-thumb:empty{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23bdbdbd"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-2.8 4.3-5 8-5s8 2.2 8 5H4z"/></svg>');background-repeat:no-repeat;background-position:center;background-size:60%}
+    .staff-name{font-weight:700;color:var(--qmul-blue);line-height:1}
+    .staff-title{font-size:.8rem;color:var(--qmul-grey-700)}
+
+    /* social share row */
+    .social-row{display:flex;align-items:center;gap:.6rem;margin-left:auto}
+    .share-btn{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:rgba(13,50,115,.04);color:var(--qmul-blue);text-decoration:none}
+    .share-btn svg{width:16px;height:16px;display:block;fill:currentColor}
+    .share-btn:hover{background:var(--qmul-blue);color:#fff}
+
+    /* pagination */
+    .pagination{display:flex;justify-content:center;gap:.5rem;margin:2.25rem 0;flex-wrap:wrap}
+    .page-btn{padding:.5rem .75rem;border-radius:6px;border:1px solid #dee2e6;background:#fff;cursor:pointer}
+    .page-btn.active,.page-btn:hover{background:var(--qmul-blue);color:#fff;border-color:var(--qmul-blue)}
+
+    /* small screens */
+    @media (max-width:900px){
+      .hero-content{grid-template-columns:1fr;gap:1rem}
+      .featured-image{height:180px}
+    }
+    @media (max-width:768px){
+      .nav-menu{display:none}
+      .news-grid{grid-template-columns:1fr}
+      .featured-card{order:2}
+    }
+  </style>
+</head>
+<body>
+  <header class="header" role="banner">
+    <div class="header-content">
+      <div class="logo" aria-hidden="true">
+        <span>Queen Mary</span>
+        <span style="font-size:.85rem;font-weight:500">University of London</span>
+      </div>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul class="nav-menu" role="list">
+          <li><a href="#">Study</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Research</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 id="hero-title">Content Hub</h1>
+          <p>Discover the latest content, research breakthroughs and inspiring case studies from Queen Mary University's vibrant community.</p>
+          <div class="search-box" role="search" aria-label="Search content">
+            <input type="text" placeholder="Search content..." aria-label="Search input">
+            <button type="button" aria-label="Search">Search</button>
+          </div>
+        </div>
+
+        <aside class="featured-card" aria-labelledby="featured-title">
+          <div class="featured-image" style="background-image:url('https://via.placeholder.com/900x600/0D3273/ffffff?text=Featured+Article+Image');" role="img" aria-label="Featured article image"></div>
+          <div class="featured-content">
+            <span class="badge jade" aria-hidden="true">Featured</span>
+            <h3 id="featured-title">Queen Mary researchers among top 100 in UK</h3>
+            <p>Our academics continue to lead groundbreaking research in their fields, making significant contributions to science and society.</p>
+
+            <div class="article-meta" aria-hidden="true">
+              <span class="meta-pill" title="Reading time">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 1a11 11 0 1 0 .001 22.001A11 11 0 0 0 12 1zm1 12h4v2h-6V6h2v7z"/></svg>
+                6 min read
+              </span>
+              <div class="social-row" style="margin-left:auto">
+                <span style="font-weight:700;color:var(--qmul-grey-700);font-size:.9rem;margin-right:.4rem">Share:</span>
+                <a class="share-btn" href="#" aria-label="Share on X" title="Share on X">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z"/></svg>
+                </a>
+                <a class="share-btn" href="#" aria-label="Share on Facebook" title="Share on Facebook">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-3h2.2V9.1c0-2.2 1.3-3.4 3.3-3.4.96 0 1.95.17 1.95.17v2.15h-1.1c-1.1 0-1.44.68-1.44 1.38V12h2.46l-.39 3h-2.07v7A10 10 0 0 0 22 12z"/></svg>
+                </a>
+                <a class="share-btn" href="#" aria-label="Share on LinkedIn" title="Share on LinkedIn">
+                  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM7 19H4V9h3v10zM5.5 7.7A1.7 1.7 0 1 1 7.2 6a1.7 1.7 0 0 1-1.7 1.7zM20 19h-3v-5.2c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.4-1.6 3.3-1.6 2.4 0 4.2 1.6 4.2 5.2V19z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="filters-section" aria-label="Filters">
+      <div class="filters-content">
+        <span class="filters-title" style="margin-bottom: 1rem; display: block;">Filter content by:</span>
+        
+        <div class="filters-container" role="group" aria-label="Filter controls">
+          
+          <div class="filter-accordion-wrapper">
+             <details class="filter-accordion">
+                <summary>Content Type</summary>
+                <div class="checkbox-list-container">
+                  <label class="checkbox-item"><input type="checkbox"> Stories (5)</label>
+                  <label class="checkbox-item"><input type="checkbox"> Article (12)</label>
+                  <label class="checkbox-item"><input type="checkbox"> Guide (3)</label>
+                  <label class="checkbox-item"><input type="checkbox"> Multimedia (2)</label>
+                  <label class="checkbox-item"><input type="checkbox"> Blogpost (8)</label>
+               </div>
+             </details>
+          </div>
+
+          <div class="filter-accordion-wrapper">
+             <details class="filter-accordion">
+                <summary>Subject</summary>
+                <div class="checkbox-list-container">
+                  <label class="checkbox-item"><input type="checkbox"> Research </label>
+                  <label class="checkbox-item"><input type="checkbox"> News </label>
+                  <label class="checkbox-item"><input type="checkbox"> Events </label>
+               </div>
+             </details>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-audience">Audience</label>
+            <select id="filter-audience">
+              <option value="">All Audiences</option>
+              <option value="students">Students</option>
+              <option value="parents">Parents</option>
+              <option value="schools">Schools</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-month">Month</label>
+            <select id="filter-month">
+              <option value="">All months</option>
+              <option>January</option><option>February</option><option>March</option><option>April</option>
+              <option>May</option><option>June</option><option>July</option><option>August</option>
+              <option>September</option><option>October</option><option>November</option><option>December</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-year">Year</label>
+            <select id="filter-year">
+              <option value="">All years</option>
+              <option>2025</option><option>2024</option><option>2023</option><option>2022</option>
+            </select>
+          </div>
+
+          <div class="filter-buttons">
+            <button class="btn-primary" type="button">Apply Filters</button>
+            <button class="btn-link" type="button">Clear All</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="news-section" aria-labelledby="news-heading">
+      
+      <div class="sorting-controls">
+        <label for="sort-by">Sort by</label>
+        <select id="sort-by">
+          <option value="relevance">Relevance</option>
+          <option value="newest" selected>Newest to Oldest</option>
+          <option value="oldest">Oldest to Newest</option>
+          <option value="popularity">Popularity</option>
+        </select>
+      </div>
+
+      <h2 id="news-heading" style="position:relative;left:-9999px;top:auto;height:1px;width:1px;overflow:hidden">News and features</h2>
+
+      <div class="news-grid">
+
+        <article class="news-card" aria-labelledby="a1-title">
+          <div class="news-image" style="background-image:url('https://via.placeholder.com/900x600/0D3273/FFFFFF?text=Students+Reading');" role="img" aria-label="Students reading"></div>
+          <div class="news-content">
+            <span class="badge news" aria-hidden="true">News</span>
+            <h3 id="a1-title">Making diversity count: empowering students through co-creation of inclusive STEM curricula</h3>
+
+            <div class="article-meta">
+              <span class="meta-pill" title="Reading time">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1 0 .001 22.001A11 11 0 0 0 12 1zm1 12h4v2h-6V6h2v7z"/></svg>
+                5 min read
+              </span>
+              <div class="social-row" aria-hidden="true">
+                <a class="share-btn" href="#" aria-label="Share on X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-3h2.2V9.1c0-2.2 1.3-3.4 3.3-3.4.96 0 1.95.17 1.95.17v2.15h-1.1c-1.1 0-1.44.68-1.44 1.38V12h2.46l-.39 3h-2.07v7A10 10 0 0 0 22 12z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM7 19H4V9h3v10zM5.5 7.7A1.7 1.7 0 1 1 7.2 6a1.7 1.7 0 0 1-1.7 1.7zM20 19h-3v-5.2c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.4-1.6 3.3-1.6 2.4 0 4.2 1.6 4.2 5.2V19z"/></svg></a>
+              </div>
+            </div>
+
+            <div class="staff-profile">
+              <div class="staff-thumb" aria-hidden="true" style="background-image:url('https://via.placeholder.com/80x80/0D3273/FFFFFF?text=RS');"></div>
+              <div>
+                <div class="staff-name">Dr Rehan Shah</div>
+                <div class="staff-title">Lecturer in Mathematics and Engineering Education</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card" aria-labelledby="a2-title">
+          <div class="news-image" style="background-image:url('https://via.placeholder.com/900x600/00B2A9/FFFFFF?text=Pride+Flag');" role="img" aria-label="Pride flag"></div>
+          <div class="news-content">
+            <span class="badge research" aria-hidden="true">Research</span>
+            <h3 id="a2-title">A conversation on diversity: LGBTQ+ inclusivity in the language classroom</h3>
+
+            <div class="article-meta">
+              <span class="meta-pill" title="Reading time">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1 0 .001 22.001A11 11 0 0 0 12 1zm1 12h4v2h-6V6h2v7z"/></svg>
+                4 min read
+              </span>
+              <div class="social-row" aria-hidden="true">
+                <a class="share-btn" href="#" aria-label="Share on X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-3h2.2V9.1c0-2.2 1.3-3.4 3.3-3.4.96 0 1.95.17 1.95.17v2.15h-1.1c-1.1 0-1.44.68-1.44 1.38V12h2.46l-.39 3h-2.07v7A10 10 0 0 0 22 12z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM7 19H4V9h3v10zM5.5 7.7A1.7 1.7 0 1 1 7.2 6a1.7 1.7 0 0 1-1.7 1.7zM20 19h-3v-5.2c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.4-1.6 3.3-1.6 2.4 0 4.2 1.6 4.2 5.2V19z"/></svg></a>
+              </div>
+            </div>
+
+            <div class="staff-profile">
+              <div class="staff-thumb" style="background-image:url('https://via.placeholder.com/80x80/00B2A9/FFFFFF?text=DRV');" aria-hidden="true"></div>
+              <div>
+                <div class="staff-name">Dr David Rodriguez-Velasco</div>
+                <div class="staff-title">Lecturer in Spanish Language and Culture</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card" aria-labelledby="a3-title">
+          <div class="news-image" style="background-image:url('https://via.placeholder.com/900x600/E87722/FFFFFF?text=YES+NO+Neon');" role="img" aria-label="Welcome week activity"></div>
+          <div class="news-content">
+            <span class="badge news" aria-hidden="true">News</span>
+            <h3 id="a3-title">Welcome Week Activity – Unpopular opinions in Economics</h3>
+
+            <div class="article-meta">
+              <span class="meta-pill" title="Reading time">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1 0 .001 22.001A11 11 0 0 0 12 1zm1 12h4v2h-6V6h2v7z"/></svg>
+                3 min read
+              </span>
+              <div class="social-row" aria-hidden="true">
+                <a class="share-btn" href="#" aria-label="Share on X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-3h2.2V9.1c0-2.2 1.3-3.4 3.3-3.4.96 0 1.95.17 1.95.17v2.15h-1.1c-1.1 0-1.44.68-1.44 1.38V12h2.46l-.39 3h-2.07v7A10 10 0 0 0 22 12z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM7 19H4V9h3v10zM5.5 7.7A1.7 1.7 0 1 1 7.2 6a1.7 1.7 0 0 1-1.7 1.7zM20 19h-3v-5.2c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.4-1.6 3.3-1.6 2.4 0 4.2 1.6 4.2 5.2V19z"/></svg></a>
+              </div>
+            </div>
+
+            <div class="staff-profile">
+              <div class="staff-thumb" style="background-image:url('https://via.placeholder.com/80x80/E87722/FFFFFF?text=MN');" aria-hidden="true"></div>
+              <div>
+                <div class="staff-name">Dr Manolis Noikokyris</div>
+                <div class="staff-title">Reader in Economics and Finance Education</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="news-card" aria-labelledby="a4-title">
+          <div class="news-image" style="background-image:url('https://via.placeholder.com/900x600/00B2A9/FFFFFF?text=Research');" role="img"></div>
+          <div class="news-content">
+            <span class="badge research" aria-hidden="true">Research</span>
+            <h3 id="a4-title">Queen Mary researchers among top 100 in UK</h3>
+
+            <div class="article-meta">
+              <span class="meta-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1 0 .001 22.001A11 11 0 0 0 12 1zm1 12h4v2h-6V6h2v7z"/></svg>7 min read</span>
+              <div class="social-row" aria-hidden="true">
+                <a class="share-btn" href="#" aria-label="Share on X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-3h2.2V9.1c0-2.2 1.3-3.4 3.3-3.4.96 0 1.95.17 1.95.17v2.15h-1.1c-1.1 0-1.44.68-1.44 1.38V12h2.46l-.39 3h-2.07v7A10 10 0 0 0 22 12z"/></svg></a>
+                <a class="share-btn" href="#" aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24"><path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM7 19H4V9h3v10zM5.5 7.7A1.7 1.7 0 1 1 7.2 6a1.7 1.7 0 0 1-1.7 1.7zM20 19h-3v-5.2c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.4-1.6 3.3-1.6 2.4 0 4.2 1.6 4.2 5.2V19z"/></svg></a>
+              </div>
+            </div>
+
+               <div class="staff-profile">
+              <div class="staff-thumb" style="background-image:url('https://via.placeholder.com/80x80/E87722/FFFFFF?text=MN');" aria-hidden="true"></div>
+              <div>
+                <div class="staff-name">Dr Manolis Noikokyris</div>
+                <div class="staff-title">Reader in Economics and Finance Education</div>
+              </div>
+            </div>
+            
+            </div>
+        </article>
+
+      </div>
+
+      <div class="pagination" role="navigation" aria-label="Pagination">
+        <button class="page-btn active" aria-current="page">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">Next →</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="header footer" role="contentinfo" style="padding:2rem 1.25rem">
+    <div class="footer-content" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+      <div class="footer-section">
+        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Quick Links</h4>
+        <ul style="list-style:none">
+          <li><a href="#">About QMUL</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Campus Maps</a></li>
+          <li><a href="#">Jobs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Study</h4>
+        <ul style="list-style:none">
+          <li><a href="#">Undergraduate</a></li>
+          <li><a href="#">Postgraduate</a></li>
+          <li><a href="#">International Students</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Research</h4>
+        <ul style="list-style:none">
+          <li><a href="#">Research Excellence</a></li>
+          <li><a href="#">Research Centres</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Connect</h4>
+        <ul style="list-style:none">
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
