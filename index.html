@@ -184,7 +184,7 @@
       max-width:1400px;
       margin:0 auto;
     }
-    .filters-content .filters-title { /* FIX: Target the new H3 */
+    .filters-content .filters-title { /* Target the H3 */
       margin-bottom: 1rem; 
       display: block;
       font-size: 1.1rem; 
@@ -196,20 +196,26 @@
       align-items: center;
       gap: .75rem 1rem; /* row-gap column-gap */
     }
-    /* Style individual filter groups (dropdowns and accordions) */
-    .filters-container .filter-group,
+
+    /* FIX: This rule now applies to all filter types for consistent sizing */
+    .filters-container .filter-group, /* Keep this selector for potential future use */
     .filters-container .filter-accordion-wrapper {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      min-width: 180px; /* Give accordions a min width */
+      min-width: 180px; /* Set a common minimum width */
+      flex-grow: 1;      /* Make them all grow equally */
+      flex-basis: 0;   /* Ensure they start from the same baseline */
     }
+
     .filters-container label {
       font-weight: 600;
       color: var(--qmul-grey-900);
       font-size: .95rem;
       white-space: nowrap;
     }
+    
+    /* This <select> style is no longer used by the main filters, but good to keep */
     .filters-container select {
       padding: .6rem .7rem;
       border: 1px solid #ced4da;
@@ -220,14 +226,14 @@
       cursor: pointer;
       width: 100%; /* Make select fill its container */
       appearance: none; /* Allows custom arrow */
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3g.org/2000/svg" viewBox="0 0 16 16" fill="%230D3273"><path d="M8 11L3 6h10z"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230D3273"><path d="M8 11L3 6h10z"/></svg>');
       background-repeat: no-repeat;
       background-position: right 0.7rem center;
       background-size: 0.65em auto;
       padding-right: 2rem; /* Space for arrow */
     }
     
-    /* Accordion styles within horizontal layout */
+    /* Accordion styles (now used by ALL filters) */
     .filter-accordion {
       border: 1px solid #ced4da;
       border-radius: 6px;
@@ -298,7 +304,7 @@
       display: flex;
       gap: 1rem;
       align-items: center;
-      margin-left: auto; /* Add some space before buttons */
+      margin-left: auto; /* Push buttons to the right */
     }
     .btn-primary{
       background:var(--qmul-blue);
@@ -557,8 +563,11 @@
       
       <a href="#" class="header-logo-link" aria-label="Queen Mary University of London - Homepage">
         
+        <div class="header-logo-crest" aria-hidden="true">
+          Main<br>Logo
+        </div>
 
-        <img src="Queen-Mary_Est_1785_RGB_White_Dark-Yellow-3.png" alt="Est. 1785" class="header-logo-1785">
+        <img src="./Queen-Mary_Est_1785_RGB_White_Dark-Yellow-3.png" alt="Est. 1785" class="header-logo-1785">
       </a>
       
       <nav role="navigation" aria-label="Utility navigation">
@@ -641,27 +650,7 @@
                     <input type="checkbox" id="type-education">
                     <label for="type-education">Education (2)</label>
                   </div>
-                  <div class="checkbox-item">
-                    <input type="checkbox" id="type-stories">
-                    <label for="type-stories">Stories (5)</label>
                   </div>
-                  <div class="checkbox-item">
-                    <input type="checkbox" id="type-article">
-                    <label for="type-article">Article (12)</label>
-                  </div>
-                  <div class="checkbox-item">
-                    <input type="checkbox" id="type-guide">
-                    <label for="type-guide">Guide (3)</label>
-                  </div>
-                  <div class="checkbox-item">
-                    <input type="checkbox" id="type-multi">
-                    <label for="type-multi">Multimedia (2)</label>
-                  </div>
-                  <div class="checkbox-item">
-                    <input type="checkbox" id="type-blog">
-                    <label for="type-blog">Blogpost (8)</label>
-                  </div>
-               </div>
              </details>
           </div>
 
@@ -677,15 +666,7 @@
                     <input type="checkbox" id="topic-health">
                     <label for="topic-health">Health</label>
                   </div>
-                  <div class="checkbox-item">
-                    <input type="checkbox" id.="topic-edu">
-                    <label for="topic-edu">Education</label>
-                  </div>
-                  <div class="checkbox-item">
-                    <input type="checkbox" id="topic-art">
-                    <label for="topic-art">Art</label>
-                  </div>
-               </div>
+                   </div>
              </details>
           </div>
 
@@ -701,41 +682,60 @@
                     <input type="checkbox" id="school-sm">
                     <label for="school-sm">Science & Medicine</label>
                   </div>
+                  </div>
+             </details>
+          </div>
+
+           <div class="filter-accordion-wrapper">
+             <details class="filter-accordion">
+                <summary>All Audiences</summary>
+                <div class="checkbox-list-container">
                   <div class="checkbox-item">
-                    <input type="checkbox" id="school-se">
-                    <label for="school-se">Science & Engineering</label>
+                    <input type="checkbox" id="aud-students">
+                    <label for="aud-students">Students</label>
                   </div>
                   <div class="checkbox-item">
-                    <input type="checkbox" id="school-env">
-                    <label for="school-env">Society & Environment</label>
+                    <input type="checkbox" id="aud-parents">
+                    <label for="aud-parents">Parents</label>
+                  </div>
+                  <div class="checkbox-item">
+                    <input type="checkbox" id="aud-schools">
+                    <label for="aud-schools">Schools</label>
                   </div>
                </div>
              </details>
           </div>
 
-          <div class="filter-group">
-            <select id="filter-audience">
-              <option value="">All Audiences</option>
-              <option value="students">Students</option>
-              <option value="parents">Parents</option>
-              <option value="schools">Schools</option>
-            </select>
+           <div class="filter-accordion-wrapper">
+             <details class="filter-accordion">
+                <summary>All months</summary>
+                <div class="checkbox-list-container">
+                  <div class="checkbox-item"><input type="checkbox" id="m-jan"><label for="m-jan">January</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-feb"><label for="m-feb">February</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-mar"><label for="m-mar">March</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-apr"><label for="m-apr">April</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-may"><label for="m-may">May</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-jun"><label for="m-jun">June</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-jul"><label for="m-jul">July</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-aug"><label for="m-aug">August</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-sep"><label for="m-sep">September</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-oct"><label for="m-oct">October</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-nov"><label for="m-nov">November</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="m-dec"><label for="m-dec">December</label></div>
+               </div>
+             </details>
           </div>
 
-          <div class="filter-group">
-            <select id="filter-month">
-              <option value="">All months</option>
-              <option>January</option><option>February</option><option>March</option><option>April</option>
-              <option>May</option><option>June</option><option>July</option><option>August</option>
-              <option>September</option><option>October</option><option>November</option><option>December</option>
-            </select>
-          </div>
-
-          <div class="filter-group">
-            <select id="filter-year">
-              <option value="">All years</option>
-              <option>2025</option><option>2024</option><option>2023</option><option>2022</option>
-            </select>
+           <div class="filter-accordion-wrapper">
+             <details class="filter-accordion">
+                <summary>All years</summary>
+                <div class="checkbox-list-container">
+                  <div class="checkbox-item"><input type="checkbox" id="y-2025"><label for="y-2025">2025</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="y-2024"><label for="y-2024">2024</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="y-2023"><label for="y-2023">2023</label></div>
+                  <div class="checkbox-item"><input type="checkbox" id="y-2022"><label for="y-2022">2022</label></div>
+                   </div>
+             </details>
           </div>
 
           <div class="filter-buttons">
@@ -813,7 +813,7 @@
 
             <div class="staff-profile">
               <div class="staff-thumb" aria-hidden="true">
-                <img src="https://picsum.photos/id/1011/80/80" alt="">
+                 <img src="https://picsum.photos/id/1012/80/80" alt="">
               </div>
               <div>
                 <div class="staff-name">Dr David Rodriguez-Velasco</div>
@@ -844,7 +844,7 @@
 
             <div class="staff-profile">
               <div class="staff-thumb" aria-hidden="true">
-                <img src="https://picsum.photos/id/1011/80/80" alt="">
+                 <img src="https://picsum.photos/id/1013/80/80" alt="">
               </div>
               <div>
                 <div class="staff-name">Dr Manolis Noikokyris</div>
@@ -872,7 +872,7 @@
 
                <div class="staff-profile">
                 <div class="staff-thumb" aria-hidden="true">
-                  <img src="https://picsum.photos/id/1011/80/80" alt="">
+                  <img src="https://picsum.photos/id/1014/80/80" alt="">
                 </div>
                 <div>
                   <div class="staff-name">Dr Manolis Noikokyris</div>
@@ -979,7 +979,7 @@
               </li>
               <li>
                 <a href="#" class="social-icon-btn" aria-label="Instagram">
-                  <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.06.06 1.06.05 1.79.22 2.42.47.65.25 1.23.58 1.77 1.13.55.54.88 1.12 1.13 1.77.25.63.42 1.36.47 2.42.05 1.06.06 1.36.06 4.06s-.01 3-.06 4.06c-.05 1.06-.22 1.79-.47 2.42-.25.65-.58 1.23-1.13 1.77-.54.55-1.12.88-1.77 1.13-.63.25-1.36.42-2.42.47-1.06.05-1.36.06-4.06.06s-3-.01-4.06-.06c-1.06-.05-1.79-.22-2.42-.47-.65-.25-1.23-.58-1.77-1.13-.55-.54-.88-1.12-1.13-1.77-.25-.63-.42-1.36-.47-2.42-.05-1.06-.06-1.36-.06-4.06s.01-3 .06-4.06c.05-1.06.22-1.79.47-2.42.25-.65.58-1.23 1.13-1.77.54-.55 1.12-.88 1.77-1.13.63-.25 1.36-.42 2.42-.47C9 2.01 9.3 2 12 2zm0 2c-2.68 0-2.99.01-4.04.06-1.03.05-1.6.21-2.12.42-.53.2-.96.47-1.4.9-.44.44-.7.87-.9 1.4-.2.53-.37 1.09-.42 2.12C4.01 9.01 4 9.32 4 12s.01 2.99.06 4.04c.05 1.03.21 1.6.42 2.12.2.53.47.96.9 1.4.44.44.87.7 1.4.9.53.2 1.09.37 2.12.42 1.05.05 1.36.06 4.04.06s2.99-.01 4.04-.06c1.03-.05 1.6-.21 2.12-.42.53-.2.96-.47 1.4-.9.44-.44.7-.87.9-1.4.2-.53.37-1.09.42-2.12.05-1.05.06-1.36.06-4.04s-.01-2.99-.06-4.04c-.05-1.03-.21-1.6-.42-2.12-.2-.53-.47-.96-.9-1.4-.44-.44-.87-.7-1.4-.9-.53-.2-1.09-.37-2.12-.42C14.99 4.01 14.68 4 12 4zm0 3.1c-2.7 0-4.9 2.2-4.9 4.9s2.2 4.9 4.9 4.9 4.9-2.2 4.9-4.9-2.2-4.9-4.9-4.9zm0 8c-1.71 0-3.1-1.39-3.1-3.1s1.39-3.1 3.1-3.1 3.1 1.39 3.1 3.1-1.39 3.1-3.1 3.1zm3.8-8.1c-.66 0-1.2.54-1.2 1.2s.54 1.2 1.2 1.2 1.2-.54 1.2-1.2-.54-1.2-1.2-1.2z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.06.06 1.06.05 1.79.22 2.42.47.65.25 1.23.58 1.77 1.13.55.54.88 1.12 1.13 1.77.25.63.42 1.36.47 2.42.05 1.06.06 1.36.06 4.06s-.01 3-.06 4.06c-.05 1.06-.22 1.79-.47 2.42-.25.65-.58 1.23-1.13 1.77-.54.55-1.12.88-1.77 1.13-.63.25-1.36.42-2.42.47-1.06.05-1.36.06-4.06.06s-3-.01-4.06-.06c-1.06-.05-1.79-.22-2.42-.47-.65-.25-1.23-.58-1.77-1.13-.55-.54-.88-1.12-1.13-1.77-.25-.63-.42-1.36-.47-2.42-.05-1.06-.06-1.36-.06-4.06s.01-3 .06-4.06c.05-1.06.22-1.79.47-2.42.25-.65.58 1.23 1.13-1.77.54-.55 1.12-.88 1.77-1.13.63-.25 1.36.42 2.42.47C9 2.01 9.3 2 12 2zm0 2c-2.68 0-2.99.01-4.04.06-1.03.05-1.6.21-2.12.42-.53.2-.96.47-1.4.9-.44.44-.7.87-.9 1.4-.2.53-.37 1.09-.42 2.12C4.01 9.01 4 9.32 4 12s.01 2.99.06 4.04c.05 1.03.21 1.6.42 2.12.2.53.47.96.9 1.4.44.44.87.7 1.4.9.53.2 1.09.37 2.12.42 1.05.05 1.36.06 4.04.06s2.99-.01 4.04-.06c1.03-.05 1.6-.21 2.12-.42.53-.2.96-.47 1.4-.9.44-.44.7-.87.9-1.4.2-.53.37-1.09.42-2.12.05-1.05.06-1.36.06-4.04s-.01-2.99-.06-4.04c-.05-1.03-.21-1.6-.42-2.12-.2-.53-.47-.96-.9-1.4-.44-.44-.87-.7-1.4-.9-.53-.2-1.09-.37-2.12-.42C14.99 4.01 14.68 4 12 4zm0 3.1c-2.7 0-4.9 2.2-4.9 4.9s2.2 4.9 4.9 4.9 4.9-2.2 4.9-4.9-2.2-4.9-4.9-4.9zm0 8c-1.71 0-3.1-1.39-3.1-3.1s1.39-3.1 3.1-3.1 3.1 1.39 3.1 3.1-1.39 3.1-3.1 3.1zm3.8-8.1c-.66 0-1.2.54-1.2 1.2s.54 1.2 1.2 1.2 1.2-.54 1.2-1.2-.54-1.2-1.2-1.2z"/></svg>
                 </a>
               </li>
               <li>
