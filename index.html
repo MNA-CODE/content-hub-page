@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-t" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Content Hub | Queen Mary University of London</title>
   <style>
     :root{
       --qmul-blue:#0D3273;
-      --qmul-gold:#FFD100;
+      --qmul-gold:#FFD100; /* This was your old gold */
+      --qmul-gold-new: #B89631; /* This is closer to the 1785 logo */
       --qmul-jade:#00B2A9;
       --qmul-purple:#6B2C91;
       --qmul-orange:#E87722;
@@ -18,7 +19,7 @@
 
     /* reset / base */
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
+    html,body{height:100%; scroll-behavior: smooth;} /* Added smooth scroll */
     body{
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       color:var(--qmul-grey-900);
@@ -29,7 +30,7 @@
     a { color: inherit; text-decoration: none; }
     img { display:block; max-width:100%; }
 
-    /* FIX: Added accessibility utility class */
+    /* Accessibility utility class */
     .visually-hidden {
       position: absolute;
       width: 1px;
@@ -42,23 +43,101 @@
       border: 0;
     }
 
-    /* Header */
+    /* --- OLD HEADER STYLES (Removing old, adding new) --- */
+    
+    /* --- NEW HEADER --- */
     .header{
       background:var(--qmul-blue);
       color:#fff;
-      padding:.75rem 1.25rem;
+      padding:1rem 1.25rem; /* Increased padding */
       position:sticky;
       top:0;
       z-index:1200;
       box-shadow:0 2px 4px rgba(0,0,0,.08);
+      min-height: 80px; /* Give it a set height */
+      display: flex;
+      align-items: center;
     }
     .header-content{
-      max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+      max-width:100%; /* Make it full width */
+      width: 100%;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
     }
-    .logo{display:flex;flex-direction:column;color:#fff;font-weight:700;font-size:1.05rem;line-height:1}
-    nav .nav-menu{display:flex;gap:1.25rem;list-style:none;}
-    .nav-menu a{color:#fff;font-weight:500;font-size:.95rem}
-    .nav-menu a:hover{color:var(--qmul-gold)}
+    
+    /* Header Nav (Left & Right) */
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem; /* Space between nav items */
+      list-style: none;
+    }
+    .header-nav a {
+      color: #fff;
+      font-weight: 600; /* Bolder text */
+      font-size: .9rem;
+      text-transform: uppercase; /* Uppercase text */
+      letter-spacing: .03em;
+      padding: .5rem 0;
+      border-bottom: 2px solid transparent;
+      transition: border-color .2s;
+    }
+    .header-nav a:hover {
+      border-bottom-color: var(--qmul-gold-new);
+    }
+    
+    /* Header Logo (Center) */
+    .header-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      /* This positions the logo in the absolute center */
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    /* This is for your main white crest logo */
+    .header-logo-crest {
+      height: 50px; /* Adjust height as needed */
+      width: auto;
+      /* --- PLACEHOLDER --- */
+      /* Remove this when you add your real logo */
+      background: #fff2;
+      color: #fff;
+      font-weight: bold;
+      padding: .5rem 1rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .8rem;
+      text-align: center;
+      line-height: 1.2;
+      /* --- END PLACEHOLDER --- */
+    }
+    .header-logo-1785 {
+      height: 45px; /* Adjust height as needed */
+      width: auto;
+    }
+    
+    /* Header Right (Search) */
+    .header-nav .search-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+    .header-nav .search-link svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+    }
+    
+    /* --- END NEW HEADER --- */
+
 
     /* Hero */
     .hero{background:var(--qmul-blue);color:#fff;padding:2.5rem 1.25rem}
@@ -124,7 +203,6 @@
       align-items: center;
       gap: 0.5rem;
       min-width: 180px; /* Give accordions a min width */
-      /* position: relative; */ /* <-- FIX: REMOVED from here. Moved to .filter-accordion */
     }
     .filters-container label {
       font-weight: 600;
@@ -142,7 +220,7 @@
       cursor: pointer;
       width: 100%; /* Make select fill its container */
       appearance: none; /* Allows custom arrow */
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230D3273"><path d="M8 11L3 6h10z"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3g.org/2000/svg" viewBox="0 0 16 16" fill="%230D3273"><path d="M8 11L3 6h10z"/></svg>');
       background-repeat: no-repeat;
       background-position: right 0.7rem center;
       background-size: 0.65em auto;
@@ -155,11 +233,10 @@
       border-radius: 6px;
       background: #fff;
       width: 100%; /* Fill wrapper */
-      position: relative; /* <-- FIX: ADDED here */
+      position: relative; 
     }
-    /* FIX: Add this new rule to lift the open dropdown */
     .filter-accordion[open] {
-      z-index: 11; /* This lifts the open accordion (and its child list) above siblings */
+      z-index: 11; 
     }
     .filter-accordion summary {
       display: flex;
@@ -203,7 +280,6 @@
     .checkbox-list-container::-webkit-scrollbar-track { background: var(--qmul-grey-50); border-radius: 4px; }
     .checkbox-list-container::-webkit-scrollbar-thumb { background-color: var(--qmul-blue); border-radius: 4px; }
     
-    /* FIX: Updated for new accessible checkbox structure */
     .checkbox-item { 
       padding:.3rem 0; 
       display:flex; 
@@ -298,9 +374,8 @@
       background-size:cover;
       background-position:center;
       flex-shrink:0;
-      overflow: hidden; /* <-- FIX: ADDED */
+      overflow: hidden; 
     }
-    /* FIX: ADDED this rule */
     .staff-thumb img {
       width: 100%;
       height: 100%;
@@ -330,33 +405,178 @@
     @media (max-width:900px){
       .hero-content{grid-template-columns:1fr;gap:1rem}
       .featured-image{height:180px}
+      
+      /* --- NEW RESPONSIVE HEADER --- */
+      .header-logo-link {
+        position: static;
+        transform: none;
+        order: -1; /* Move logo to the left */
+        margin-right: auto; /* Push navs to the right */
+      }
+      .header-nav.header-left { display: none; } /* Hide left nav */
     }
-    @media (max-tidth:768px){
-      .nav-menu{display:none}
+    @media (max-width:768px){
+      .nav-menu{display:none} /* Hides old nav menu */
       .news-grid{grid-template-columns:1fr}
       .featured-card{order:2}
+      
+      /* --- NEW RESPONSIVE HEADER --- */
+      .header-nav.header-right { 
+        /* Hide text links, only show search */
+        gap: 0;
+      }
+      .header-nav.header-right a:not(.search-link) {
+        display: none;
+      }
+      .header-logo-1785 { display: none; } /* Hide 1785 logo */
+      .header-logo-crest { height: 40px; } /* Smaller crest */
     }
+
+
+    /* --- NEW FOOTER --- */
+    .footer {
+      background: var(--qmul-blue);
+      color: #fff;
+      padding: 3rem 1.25rem 2rem;
+      font-size: .9rem;
+      line-height: 1.7;
+    }
+    .footer-content {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .footer-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .footer-links-grid ul {
+      list-style: none;
+    }
+    .footer-links-grid a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer-links-grid a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer Legal/Contact area */
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.2);
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    
+    .footer-legal-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem 1.5rem;
+      list-style: none;
+    }
+    .footer-legal-links a:hover {
+      text-decoration: underline;
+    }
+    
+    .footer-contact-area {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-left: auto; /* Push to the right */
+    }
+    
+    .footer-address {
+      font-style: normal;
+    }
+    
+    .footer-social-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .footer-social-icons {
+      display: flex;
+      gap: .5rem;
+      list-style: none;
+    }
+    .social-icon-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: #fff;
+      transition: background-color .2s;
+    }
+    .social-icon-btn:hover {
+      background: rgba(255,255,255,0.2);
+    }
+    .social-icon-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    
+    .back-to-top-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 4px;
+      color: var(--qmul-blue);
+    }
+    .back-to-top-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    /* --- END NEW FOOTER --- */
+
   </style>
 </head>
-<body>
-  <header class="header" role="banner">
+<body id="top"> <header class="header" role="banner">
     <div class="header-content">
-      <a href="#" class="logo" aria-label="Queen Mary University of London - Homepage">
-        <span>Queen Mary</span>
-        <span style="font-size:.85rem;font-weight:500">University of London</span>
-      </a>
+      
       <nav role="navigation" aria-label="Main navigation">
-        <ul class="nav-menu">
+        <ul class="header-nav header-left">
           <li><a href="#">Study</a></li>
           <li><a href="#">About</a></li>
           <li><a href="#">Research</a></li>
-          <li><a href="#">News</a></li>
-          <li><a href="#">Contact</a></li>
         </ul>
       </nav>
-    </div>
-  </header>
+      
+      <a href="#" class="header-logo-link" aria-label="Queen Mary University of London - Homepage">
+        
 
+        <img src="Queen-Mary_Est_1785_RGB_White_Dark-Yellow-3.png" alt="Est. 1785" class="header-logo-1785">
+      </a>
+      
+      <nav role="navigation" aria-label="Utility navigation">
+        <ul class="header-nav header-right">
+          <li><a href="#">Find an expert</a></li>
+          <li>
+            <a href="#" class="search-link">
+              <span>Search</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      </div>
+  </header>
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
@@ -574,7 +794,7 @@
         </article>
 
         <article class="news-card" aria-labelledby="a2-title">
-          <div class="news-image" style="background-image:url('https://picsum.photos/id/2/400/300');"></div>
+          <div class="news-image" style="background-image:url('https://picsum.photos/id/2/600/300');"></div>
           <div class="news-content">
             <span class="badge research" aria-hidden="true">Research</span>
             <h3 id="a2-title">A conversation on diversity: LGBTQ+ inclusivity in the language classroom</h3>
@@ -605,7 +825,7 @@
         </article>
 
         <article class="news-card" aria-labelledby="a3-title">
-          <div class="news-image" style="background-image:url('https://picsum.photos/id/3/400/300');"></div>
+          <div class="news-image" style="background-image:url('https://picsum.photos/id/3/600/300');"></div>
           <div class="news-content">
             <span class="badge news" aria-hidden="true">News</span>
             <h3 id="a3-title">Welcome Week Activity – Unpopular opinions in Economics</h3>
@@ -636,7 +856,7 @@
         </article>
 
         <article class="news-card" aria-labelledby="a4-title">
-          <div class="news-image" style="background-image:url('https://picsum.photos/id/4/400/300');"></div>
+          <div class="news-image" style="background-image:url('https://picsum.photos/id/4/600/300');"></div>
           <div class="news-content">
             <span class="badge research" aria-hidden="true">Research</span>
             <h3 id="a4-title">Queen Mary researchers among top 100 in UK</h3>
@@ -675,41 +895,118 @@
     </section>
   </main>
 
-  <footer class="header footer" role="contentinfo" style="padding:2rem 1.25rem">
-    <div class="footer-content" style="max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
-      <div class="footer-section">
-        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Quick Links</h4>
-        <ul style="list-style:none">
-          <li><a href="#">About QMUL</a></li>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Campus Maps</a></li>
-          <li><a href="#">Jobs</a></li>
-        </ul>
+  <footer class="footer" role="contentinfo">
+    <div class="footer-content">
+      
+      <div class="footer-links-grid">
+        <div class="footer-links-column">
+          <ul>
+            <li><a href="#">Accommodation</a></li>
+            <li><a href="#">Alumni</a></li>
+            <li><a href="#">Schools and institutes</a></li>
+            <li><a href="#">Careers and Enterprise</a></li>
+            <li><a href="#">Collaborate with us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-column">
+          <ul>
+            <li><a href="#">Global</a></li>
+            <li><a href="#">How to find us</a></li>
+            <li><a href="#">International students</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">MyQMUL</a></li>
+            <li><a href="#">New students</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-column">
+          <ul>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Order a prospectus</a></li>
+            <li><a href="#">Our brand</a></li>
+            <li><a href="#">Parents</a></li>
+            <li><a href="#">Professional services departments</a></li>
+            <li><a href="#">Public Engagement</a></li>
+            <li><a href="#">QMplus</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-column">
+          <ul>
+            <li><a href="#">Staff directory</a></li>
+            <li><a href="#">Staff intranet</a></li>
+            <li><a href="#">Strategy 2030</a></li>
+            <li><a href="#">Students' Union</a></li>
+            <li><a href="#">Teachers</a></li>
+            <li><a href="#">Term dates</a></li>
+            <li><a href="#">Trade Union Facility Time</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-section">
-        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Study</h4>
-        <ul style="list-style:none">
-          <li><a href="#">Undergraduate</a></li>
-          <li><a href="#">Postgraduate</a></li>
-          <li><a href="#">International Students</a></li>
+      
+      <div class="footer-bottom">
+        <ul class="footer-legal-links">
+          <li><a href="#">Accessibility</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">Privacy and cookies</a></li>
+          <li><a href="#">Site map</a></li>
+          <li><a href="#">Modern Slavery Statement</a></li>
+          <li><a href="#">Supplier fraud alert</a></li>
+          <li><a href="#">OFS Data</a></li>
         </ul>
-      </div>
-      <div class="footer-section">
-        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Research</h4>
-        <ul style="list-style:none">
-          <li><a href="#">Research Excellence</a></li>
-          <li><a href="#">Research Centres</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h4 style="color:var(--qmul-gold);margin-bottom:.5rem">Connect</h4>
-        <ul style="list-style:none">
-          <li><a href="#">Twitter</a></li>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">LinkedIn</a></li>
-        </ul>
+        
+        <div class="footer-contact-area">
+          <address class="footer-address">
+            <strong>Contact the university</strong><br>
+            Queen Mary University of London<br>
+            Mile End Road<br>
+            London E1 4NS<br>
+            +44 (0) 20 7882 5555
+          </address>
+          
+          <div class="footer-social-block">
+            <ul class="footer-social-icons">
+              <li>
+                <a href="#" class="social-icon-btn" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.5 0-1 .5-1 1v2h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-icon-btn" aria-label="X">
+                  <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-icon-btn" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.06.06 1.06.05 1.79.22 2.42.47.65.25 1.23.58 1.77 1.13.55.54.88 1.12 1.13 1.77.25.63.42 1.36.47 2.42.05 1.06.06 1.36.06 4.06s-.01 3-.06 4.06c-.05 1.06-.22 1.79-.47 2.42-.25.65-.58 1.23-1.13 1.77-.54.55-1.12.88-1.77 1.13-.63.25-1.36.42-2.42.47-1.06.05-1.36.06-4.06.06s-3-.01-4.06-.06c-1.06-.05-1.79-.22-2.42-.47-.65-.25-1.23-.58-1.77-1.13-.55-.54-.88-1.12-1.13-1.77-.25-.63-.42-1.36-.47-2.42-.05-1.06-.06-1.36-.06-4.06s.01-3 .06-4.06c.05-1.06.22-1.79.47-2.42.25-.65.58-1.23 1.13-1.77.54-.55 1.12-.88 1.77-1.13.63-.25 1.36-.42 2.42-.47C9 2.01 9.3 2 12 2zm0 2c-2.68 0-2.99.01-4.04.06-1.03.05-1.6.21-2.12.42-.53.2-.96.47-1.4.9-.44.44-.7.87-.9 1.4-.2.53-.37 1.09-.42 2.12C4.01 9.01 4 9.32 4 12s.01 2.99.06 4.04c.05 1.03.21 1.6.42 2.12.2.53.47.96.9 1.4.44.44.87.7 1.4.9.53.2 1.09.37 2.12.42 1.05.05 1.36.06 4.04.06s2.99-.01 4.04-.06c1.03-.05 1.6-.21 2.12-.42.53-.2.96-.47 1.4-.9.44-.44.7-.87.9-1.4.2-.53.37-1.09.42-2.12.05-1.05.06-1.36.06-4.04s-.01-2.99-.06-4.04c-.05-1.03-.21-1.6-.42-2.12-.2-.53-.47-.96-.9-1.4-.44-.44-.87-.7-1.4-.9-.53-.2-1.09-.37-2.12-.42C14.99 4.01 14.68 4 12 4zm0 3.1c-2.7 0-4.9 2.2-4.9 4.9s2.2 4.9 4.9 4.9 4.9-2.2 4.9-4.9-2.2-4.9-4.9-4.9zm0 8c-1.71 0-3.1-1.39-3.1-3.1s1.39-3.1 3.1-3.1 3.1 1.39 3.1 3.1-1.39 3.1-3.1 3.1zm3.8-8.1c-.66 0-1.2.54-1.2 1.2s.54 1.2 1.2 1.2 1.2-.54 1.2-1.2-.54-1.2-1.2-1.2z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-icon-btn" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-1.68-1.54-2.99-3.22-3.22C16.6 3.75 12 3.75 12 3.75s-4.6 0-6.36.22C3.96 4.2 2.65 5.51 2.42 7.19C2.19 8.95 2.19 12 2.19 12s0 3.05.23 4.81c.23 1.68 1.54 2.99 3.22 3.22C7.4 20.25 12 20.25 12 20.25s4.6 0 6.36-.22c1.68-.23 2.99-1.54 3.22-3.22C21.81 15.05 21.81 12 21.81 12s0-3.05-.23-4.81zM9.75 15.3V8.7l5.81 3.3-5.81 3.3z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-icon-btn" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24"><path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM7 19H4V9h3v10zM5.5 7.7A1.7 1.7 0 1 1 7.2 6a1.7 1.7 0 0 1-1.7 1.7zM20 19h-3v-5.2c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.4-1.6 3.3-1.6 2.4 0 4.2 1.6 4.2 5.2V19z"/></svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-icon-btn" aria-label="TikTok">
+                  <svg viewBox="0 0 24 24"><path d="M12.53.02C13.16 0 13.77.06 14.37.17 19.38 1.14 23.08 5.4 23.83 10.4c.12.8.17 1.62.17 2.45 0 2.22-.5 4.34-1.4 6.22-1.4 3-3.9 5.3-7.1 6.18-1.2.33-2.4.48-3.7.48-5.3 0-9.8-3.7-10.9-8.7-.3-1.4-.4-2.8-.4-4.2 0-5.8 4.7-10.5 10.5-10.5.8 0 1.6.1 2.3.3zM17 6.1c-1.1 0-2.1.4-2.8 1.1-.8.8-1.1 1.8-1.1 2.9V16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.4 0 .9.1 1.3.2V8.3c-.4-.1-.9-.2-1.3-.2-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6V9.1c0-1.1.4-2.1 1.1-2.8.7-.8 1.7-1.2 2.8-1.2.1 0 .2 0 .3 0v-3s-.1 0-.3 0z"/></svg>
+                </a>
+              </li>
+            </ul>
+            <a href="#top" class="back-to-top-btn" aria-label="Back to top">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7.41 15.41 12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
-</body>
+  </body>
 </html>
