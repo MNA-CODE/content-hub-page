@@ -21,7 +21,7 @@
         </ul>
       </nav>
       <a href="#" class="header-logo-link" aria-label="Queen Mary University of London - Homepage">
-        <img src="./Queen-Mary_Est_1785_RGB_White_Dark-Yellow-3.png" alt="Est. 1785" class="header-logo-1785">
+        <img src="./images/Queen-Mary_Est_1785_RGB_White_Dark-Yellow-3.png" alt="Est. 1785" class="header-logo-1785">
       </a>
       <nav role="navigation" aria-label="Utility navigation">
         <ul class="header-nav header-right">
@@ -43,9 +43,14 @@
         <div class="hero-text">
           <h1 id="hero-title" class="th-s1 th-o">Content hub</h1>
           <p>Discover the latest content, research breakthroughs and inspiring case studies from Queen Mary University of London's vibrant community.</p>
+          
           <div class="search-box" role="search" aria-label="Search content">
-            <input type="text" placeholder="Search content..." aria-label="Search input">
-            <button type="button" aria-label="Search">Search</button>
+            <input type="text" placeholder="Search undergraduate courses" aria-label="Search input">
+            <button type="button" aria-label="Search">
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              </svg>
+            </button>
           </div>
         </div>
         
@@ -53,7 +58,7 @@
           <div class="featured-image" style="background-image:url('https://picsum.photos/id/1/600/300');"></div>
           <div class="featured-content">
             <span class="badge jade" aria-hidden="true">Featured</span>
-            <h3 id="featured-title" class="th-s3 th-b">Queen Mary researchers among top 100 in UK</h3>
+            <h3 id="featured-title">Queen Mary researchers among top 100 in UK</h3>
             <p>Our academics continue to lead groundbreaking research in their fields, making significant contributions to science and society.</p>
             <div class="news-meta" style="border-top: none; padding-top: 0; margin-top: 1rem;">
               20 Oct 2025
@@ -156,11 +161,11 @@
           <div class="sorting-controls">
             <div class="filter-accordion-wrapper" style="min-width: 200px;">
                <details class="filter-accordion">
-                  <summary>Newest to oldest</summary>
+                  <summary>Newest to Oldest</summary>
                   <div class="checkbox-list-container">
                      <label class="checkbox-item"><input type="radio" name="sort-option" value="relevance"> Relevance</label>
-                     <label class="checkbox-item"><input type="radio" name="sort-option" value="newest" checked> Newest to oldest</label>
-                     <label class="checkbox-item"><input type="radio" name="sort-option" value="oldest"> Oldest to newest</label>
+                     <label class="checkbox-item"><input type="radio" name="sort-option" value="newest" checked> Newest to Oldest</label>
+                     <label class="checkbox-item"><input type="radio" name="sort-option" value="oldest"> Oldest to Newest</label>
                      <label class="checkbox-item"><input type="radio" name="sort-option" value="popularity"> Popularity</label>
                  </div>
                </details>
@@ -174,54 +179,66 @@
             <article class="news-card" aria-labelledby="a1-title">
               <div class="news-image" style="background-image:url('https://picsum.photos/id/1/400/300');"></div>
               <div class="news-content">
-                <span class="badge news" aria-hidden="true">News</span>
-                <h3 id="a1-title" class="th-s4 th-b">Making diversity count: empowering students through co-creation</h3>
-                <div class="news-meta"> 16 Oct 2025 </div>
+                <h3 id="a1-title">Making diversity count: empowering students through co-creation</h3>
+                <div class="card-meta-row">
+                  <span class="badge news" aria-hidden="true">News</span>
+                  <div class="news-meta"> 16 Oct 2025 </div>
+                </div>
               </div>
             </article>
     
             <article class="news-card card-type-event" aria-labelledby="a2-title">
               <div class="news-image" style="background-image:url('https://picsum.photos/id/2/600/300');"></div>
               <div class="news-content">
-                <span class="badge purple" aria-hidden="true">Event</span>
-                <h3 id="a2-title" class="th-s4 th-b">A conversation on diversity: LGBTQ+ inclusivity</h3>
-                <div class="news-meta"> 25 Nov 2025 | 14:00 - 15:00 </div>
+                <h3 id="a2-title">A conversation on diversity: LGBTQ+ inclusivity</h3>
+                <div class="card-meta-row">
+                  <span class="badge purple" aria-hidden="true">Event</span>
+                  <div class="news-meta"> 25 Nov 2025 | 14:00 - 15:00 </div>
+                </div>
               </div>
             </article>
     
             <article class="news-card card-type-video" aria-labelledby="a3-title">
               <div class="news-image" style="background-image:url('https://picsum.photos/id/3/600/300');"></div>
               <div class="news-content">
-                <span class="badge orange" aria-hidden="true">Video</span>
-                <h3 id="a3-title" class="th-s4 th-b">Welcome Week activity – Unpopular opinions in economics</h3>
-                <div class="news-meta"> 18 Oct 2025 </div>
+                <h3 id="a3-title">Welcome Week activity – Unpopular opinions in economics</h3>
+                <div class="card-meta-row">
+                  <span class="badge orange" aria-hidden="true">Video</span>
+                  <div class="news-meta"> 18 Oct 2025 </div>
+                </div>
               </div>
             </article>
     
             <article class="news-card" aria-labelledby="a4-title">
               <div class="news-image" style="background-image:url('https://picsum.photos/id/4/600/300');"></div>
               <div class="news-content">
-                <span class="badge research" aria-hidden="true">Research</span>
-                <h3 id="a4-title" class="th-s4 th-b">Queen Mary researchers among top 100 in UK</h3>
-                <div class="news-meta"> 19 Oct 2025 </div>
+                <h3 id="a4-title">Queen Mary researchers among top 100 in UK</h3>
+                <div class="card-meta-row">
+                  <span class="badge research" aria-hidden="true">Research</span>
+                  <div class="news-meta"> 19 Oct 2025 </div>
+                </div>
               </div>
             </article>
             
             <article class="news-card" aria-labelledby="a5-title">
               <div class="news-image" style="background-image:url('https://picsum.photos/id/5/600/300');"></div>
               <div class="news-content">
-                <span class="badge jade" aria-hidden="true">Article</span>
-                <h3 id="a5-title" class="th-s4 th-b">A guide to student life in East London</h3>
-                <div class="news-meta"> 15 Oct 2025 </div>
+                <h3 id="a5-title">A guide to student life in East London</h3>
+                <div class="card-meta-row">
+                  <span class="badge jade" aria-hidden="true">Article</span>
+                  <div class="news-meta"> 15 Oct 2025 </div>
+                </div>
               </div>
             </article>
             
             <article class="news-card" aria-labelledby="a6-title">
               <div class="news-image" style="background-image:url('https://picsum.photos/id/6/600/300');"></div>
               <div class="news-content">
-                <span class="badge blue" aria-hidden="true">Blog</span>
-                <h3 id="a6-title" class="th-s4 th-b">My first month at Queen Mary</h3>
-                <div class="news-meta"> 14 Oct 2025 </div>
+                <h3 id="a6-title">My first month at Queen Mary</h3>
+                <div class="card-meta-row">
+                  <span class="badge blue" aria-hidden="true">Blog</span>
+                  <div class="news-meta"> 14 Oct 2025 </div>
+                </div>
               </div>
             </article>
     
@@ -250,7 +267,7 @@
             <ul class="footer-social-icons">
               <li> <a href="#" class="social-icon-btn" aria-label="Facebook"> <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.5 0-1 .5-1 1v2h3l-.5 3h-2.5v6.8c4.56-.93 8-4.96 8-9.8z"/></svg> </a> </li>
               <li> <a href="#" class="social-icon-btn" aria-label="X"> <svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298l13.312 17.404z"/></svg> </a> </li>
-              <li> <a href="#" class="social-icon-btn" aria-label="Instagram"> <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.06.06 1.06.05 1.79.22 2.42.47.65.25 1.23.58 1.77 1.13.55.54.88 1.12 1.13 1.77.25.63.42 1.36.47 2.42.05 1.06.06 1.36.06 4.06s-.01 3-.06 4.06c-.05 1.06-.22 1.79-.47 2.42-.25.65-.58 1.23-1.13 1.77-.54.55-1.12.88-1.77 1.13-.63.25-1.36.42-2.42.47-1.06.05-1.36.06-4.06.06s-3-.01-4.06-.06c-1.06-.05-1.79-.22-2.42-.47-.65-.25-1.23-.58-1.77-1.13-.55-.54-.88-1.12-1.13-1.77-.25-.63-.42-1.36-.47-2.42-.05-1.06-.06-1.36-.06-4.06s.01-3 .06-4.06c.05-1.06.22-1.79.47-2.42.25-.65.58 1.23 1.13-1.77.54-.55 1.12-.88 1.77-1.13.63-.25 1.36.42 2.42.47C9 2.01 9.3 2 12 2zm0 2c-2.68 0-2.99.01-4.04.06-1.03.05-1.6.21-2.12.42-.53.2-.96.47-1.4.9-.44.44-.7.87-.9 1.4-.2.53-.37 1.09-.42 2.12C4.01 9.01 4 9.32 4 12s.01 2.99.06 4.04c.05 1.03.21 1.6.42 2.12.2.53.47.96.9 1.4.44.44.87.7 1.4.9.53.2 1.09.37 2.12.42 1.05.05 1.36.06 4.04.06s2.99-.01 4.04-.06c1.03-.05 1.6-.21 2.12-.42.53-.2.96-.47 1.4-.9.44-.44.7-.87.9-1.4.2-.53.37-1.09.42-2.12.05-1.05.06-1.36.06-4.04s-.01-2.99-.06-4.04c-.05-1.03-.21-1.6-.42-2.12-.2-.53-.47-.96-.9-1.4-.44-.44-.87-.7-1.4-.9-.53-.2-1.09-.37-2.12-.42C14.99 4.01 14.68 4 12 4zm0 3.1c-2.7 0-4.9 2.2-4.9 4.9s2.2 4.9 4.9 4.9 4.9-2.2 4.9-4.9-2.2-4.9-4.9-4.9zm0 8c-1.71 0-3.1-1.39-3.1-3.1s1.39-3.1 3.1-3.1 3.1 1.39 3.1 3.1-1.39 3.1-3.1 3.1zm3.8-8.1c-.66 0-1.2.54-1.2 1.2s.54 1.2 1.2 1.2 1.2-.54 1.2-1.2-.54-1.2-1.2-1.2z"/></svg> </a> </li>
+              <li> <a href="#" class="social-icon-btn" aria-label="Instagram"> <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3 .01 4.06.06 1.06.05 1.79.22 2.42.47.65.25 1.23.58 1.77 1.13.55.54.88 1.12 1.13 1.77.25.63.42 1.36.47 2.42.05 1.06.06 1.36.06 4.06s-.01 3-.06 4.06c-.05 1.06-.22 1.79-.47 2.42-.25.65-.58 1.23-1.13 1.77-.54.55-1.12.88-1.77 1.13-.63.25-1.36.42-2.42.47-1.06.05-1.36.06-4.06.06s-3-.01-4.06-.06c-1.06-.05-1.79-.22-2.42-.47-.65-.25-1.23-.58-1.77-1.13-.55-.54-.88-1.12-1.13-1.77-.25-.63-.42-1.36-.47-2.42-.05-1.06-.06-1.36-.06-4.06s.01-3 .06-4.06c.05-1.06.22-1.79.47-2.42.25-.65.58 1.23 1.13-1.77.54-.55 1.12-.88 1.77-1.13.63-.25 1.36.42 2.42.47C9 2.01 9.3 2 12 2zm0 2c-2.68 0-2.99.01-4.04.06-1.03.05-1.6.21-2.12.42-.53.2-.96.47-1.4.9-.44.44-.7.87-.9 1.4-.2.53-.37 1.09-.42 2.12C4.01 9.01 4 9.32 4 12s.01 2.99.06 4.04c.05 1.03.21 1.6.42 2.12.2.53.47.96.9 1.4.44.44.87.7 1.4.9.53.2 1.09.37 2.12.42 1.05.05 1.36.06 4.04.06s2.99-.01 4.04-.06c1.03-.05 1.6-.21 2.12-.42.53-.2.96-.47 1.4-.9.44-.44.7-.87-.9-1.4.2-.53.37-1.09.42-2.12.05-1.05.06-1.36.06-4.04s-.01-2.99-.06-4.04c-.05-1.03-.21-1.6-.42-2.12-.2-.53-.47-.96-.9-1.4-.44-.44-.87-.7-1.4-.9-.53-.2-1.09-.37-2.12-.42C14.99 4.01 14.68 4 12 4zm0 3.1c-2.7 0-4.9 2.2-4.9 4.9s2.2 4.9 4.9 4.9 4.9-2.2 4.9-4.9-2.2-4.9-4.9-4.9zm0 8c-1.71 0-3.1-1.39-3.1-3.1s1.39-3.1 3.1-3.1 3.1 1.39 3.1 3.1-1.39 3.1-3.1 3.1zm3.8-8.1c-.66 0-1.2.54-1.2 1.2s.54 1.2 1.2 1.2 1.2-.54 1.2-1.2-.54-1.2-1.2-1.2z"/></svg> </a> </li>
               <li> <a href="#" class="social-icon-btn" aria-label="YouTube"> <svg viewBox="0 0 24 24"><path d="M21.58 7.19c-.23-1.68-1.54-2.99-3.22-3.22C16.6 3.75 12 3.75 12 3.75s-4.6 0-6.36.22C3.96 4.2 2.65 5.51 2.42 7.19C2.19 8.95 2.19 12 2.19 12s0 3.05.23 4.81c.23 1.68 1.54 2.99 3.22 3.22C7.4 20.25 12 20.25 12 20.25s4.6 0 6.36-.22c1.68-.23 2.99-1.54 3.22-3.22C21.81 15.05 21.81 12 21.81 12s0-3.05-.23-4.81zM9.75 15.3V8.7l5.81 3.3-5.81 3.3z"/></svg> </a> </li>
               <li> <a href="#" class="social-icon-btn" aria-label="LinkedIn"> <svg viewBox="0 0 24 24"><path d="M20 0H4C1.8 0 0 1.8 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zM7 19H4V9h3v10zM5.5 7.7A1.7 1.7 0 1 1 7.2 6a1.7 1.7 0 0 1-1.7 1.7zM20 19h-3v-5.2c0-1.3-.5-2.2-1.7-2.2-1 0-1.6.7-1.9 1.3-.1.2-.1.5-.1.8V19h-3V9h3v1.3c.4-.6 1.4-1.6 3.3-1.6 2.4 0 4.2 1.6 4.2 5.2V19z"/></svg> </a> </li>
               <li> <a href="#" class="social-icon-btn" aria-label="TikTok"> <svg viewBox="0 0 24 24"><path d="M12.53.02C13.16 0 13.77.06 14.37.17 19.38 1.14 23.08 5.4 23.83 10.4c.12.8.17 1.62.17 2.45 0 2.22-.5 4.34-1.4 6.22-1.4 3-3.9 5.3-7.1 6.18-1.2.33-2.4.48-3.7.48-5.3 0-9.8-3.7-10.9-8.7-.3-1.4-.4-2.8-.4-4.2 0-5.8 4.7-10.5 10.5-10.5.8 0 1.6.1 2.3.3zM17 6.1c-1.1 0-2.1.4-2.8 1.1-.8.8-1.1 1.8-1.1 2.9V16c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4c.4 0 .9.1 1.3.2V8.3c-.4-.1-.9-.2-1.3-.2-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6V9.1c0-1.1.4-2.1 1.1-2.8.7-.8 1.7-1.2 2.8-1.2.1 0 .2 0 .3 0v-3s-.1 0-.3 0z"/></svg> </a> </li>
