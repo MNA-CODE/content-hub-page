@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Content hub | Queen Mary University of London</title>
+  <link rel="stylesheet" href="style.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="top">
+  <header class="header" role="banner">
+    <div class="header-content">
+      <nav role="navigation" aria-label="Main navigation">
+        <ul class="header-nav header-left">
+          <li><a href="#">Study</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Research</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="header-logo-link" aria-label="Queen Mary University of London - Homepage">
+        <img src="./images/Queen-Mary_Est_1785_RGB_White_Dark-Yellow-3.png" alt="Est. 1785" class="header-logo-1785">
+      </a>
+      <nav role="navigation" aria-label="Utility navigation">
+        <ul class="header-nav header-right">
+          <li><a href="#">Find an expert</a></li>
+          <li>
+            <a href="#" class="search-link">
+              <span>Search</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"> <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/> </svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 id="hero-title" class="th-s1 th-o">Content hub</h1>
+          <p>Discover the latest content, research breakthroughs and inspiring case studies from Queen Mary University of London's vibrant community.</p>
+          
+          <div class="search-box" role="search" aria-label="Search content">
+            <input type="text" placeholder="Search undergraduate courses" aria-label="Search input">
+            <button type="button" aria-label="Search">
+              <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+        </div>
+    </section>
+
+    <div class="main-content-area">
+    
+      <aside class="filters-sidebar">
+        <div class="filters-content">
+          <h3 class="filters-title">Filter content by:</h3>
+          
+          <div class="filters-container" role="group" aria-label="Filter controls">
+            
+            <div class="filter-accordion-wrapper">
+               <details class="filter-accordion">
+                  <summary>Audience type</summary>
+                  <div class="checkbox-list-container">
+                    <div class="checkbox-item"> <input type="checkbox" id="aud-students"> <label for="aud-students">Students</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="aud-staff"> <label for="aud-staff">Staff</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="aud-researchers"> <label for="aud-researchers">Researchers</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="aud-parents"> <label for="aud-parents">Parents</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="aud-schools"> <label for="aud-schools">Schools</label> </div>
+                 </div>
+               </details>
+            </div>
+            
+            <div class="filter-accordion-wrapper">
+               <details class="filter-accordion">
+                  <summary>Content type</summary>
+                  <div class="checkbox-list-container">
+                    <div class="checkbox-item"> <input type="checkbox" id="type-news"> <label for="type-news">News</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="type-events"> <label for="type-events">Events</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="type-research"> <label for="type-research">Research</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="type-video"> <label for="type-video">Video</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="type-guide"> <label for="type-guide">Guide</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="type-article"> <label for="type-article">Article</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="type-blog"> <label for="type-blog">Blogpost</label> </div>
+                 </div>
+               </details>
+            </div>
+            
+            <div class="filter-accordion-wrapper">
+               <details class="filter-accordion">
+                  <summary>Topic</summary>
+                  <div class="checkbox-list-container">
+                    <div class="checkbox-item"> <input type="checkbox" id="topic-ai"> <label for="topic-ai">AI</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="topic-health"> <label for="topic-health">Health</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="topic-culture"> <label for="topic-culture">Arts and culture</label> </div>
+                 </div>
+               </details>
+            </div>
+            
+            <div class="filter-accordion-wrapper">
+               <details class="filter-accordion">
+                  <summary>Faculty</summary>
+                  <div class="checkbox-list-container">
+                    <div class="checkbox-item"> <input type="checkbox" id="school-hss"> <label for="school-hss">Humanities and Social Sciences</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="school-md"> <label for="school-md">Medicine and Dentistry</label> </div>
+                    <div class="checkbox-item"> <input type="checkbox" id="school-se"> <label for="school-se">Science and Engineering</label> </div>
+                 </div>
+               </details>
+            </div>
+            
+            <div class="filter-accordion-wrapper">
+               <details class="filter-accordion">
+                  <summary>Year</summary>
+                  <div class="checkbox-list-container">
+                    <div class="checkbox-item"><input type="checkbox" id="y-2025"><label for="y-2025">2025</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="y-2024"><label for="y-2024">2024</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="y-2023"><label for="y-2023">2023</label></div>
+                  </div>
+               </details>
+            </div>
+            
+            <div class="filter-accordion-wrapper">
+               <details class="filter-accordion">
+                  <summary>Month</summary>
+                  <div class="checkbox-list-container">
+                    <div class="checkbox-item"><input type="checkbox" id="m-jan"><label for="m-jan">January</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="m-feb"><label for="m-feb">February</label></div>
+                    <div class="checkbox-item"><input type="checkbox" id="m-mar"><label for="m-mar">March</label></div>
+                    </div>
+               </details>
+            </div>
+
+            <div class="filter-buttons">
+              <button class="btn-primary" type="button">Apply filters</button>
+              <button class="btn-link" type="button">Clear all</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+      
+      <div class="content-grid-area">
+        <section class="news-section" aria-labelledby="news-heading">
+          <div class="sorting-controls">
+            <div class="filter-accordion-wrapper" style="min-width: 200px;">
+               <details class="filter-accordion">
+                  <summary>Newest to Oldest</summary>
+                  <div class="checkbox-list-container">
+                     <label class="checkbox-item"><input type="radio" name="sort-option" value="relevance"> Relevance</label>
+                     <label class="checkbox-item"><input type="radio" name="sort-option" value="newest" checked> Newest to Oldest</label>
+                     <label class="checkbox-item"><input type="radio" name="sort-option" value="oldest"> Oldest to Newest</label>
+                     <label class="checkbox-item"><input type="radio" name="sort-option" value="popularity"> Popularity</label>
+                 </div>
+               </details>
+            </div>
+          </div>
+          
+          <h2 id="news-heading" class="visually-hidden">News and features</h2>
+          
+          <div class="news-grid">
+    
+            <article class="news-card" aria-labelledby="a1-title">
+              <div class="news-image" style="background-image:url('https://picsum.photos/id/1/400/300');"></div>
+              <div class="news-content">
+                <h3 id="a1-title">Making diversity count: empowering students through co-creation</h3>
+                <div class="card-meta-row">
+                  <span class="badge news" aria-hidden="true">News</span>
+                  <div class="news-meta"> 16 Oct 2025 </div>
+                </div>
+              </div>
+            </article>
+    
+            <article class="news-card card-type-event" aria-labelledby="a2-title">
+              <div class="news-image" style="background-image:url('https://picsum.photos/id/2/600/300');"></div>
+              <div class="news-content">
+                <h3 id="a2-title">A conversation on diversity: LGBTQ+ inclusivity</h3>
+                <div class="card-meta-row">
+                  <span class="badge purple" aria-hidden="true">Event</span>
+                  <div class="news-meta"> 25 Nov 2025 | 14:00 - 15:00 </div>
+                </div>
+              </div>
+            </article>
+    
+            <article class="news-card card-type-video" aria-labelledby="a3-title">
+              <div class="news-image" style="background-image:url('https://picsum.photos/id/3/600/300');"></div>
+              <div class="news-content">
+                <h3 id="a3-title">Welcome Week activity – Unpopular opinions in economics</h3>
+                <div class="card-meta-row">
+                  <span class="badge orange" aria-hidden="true">Video</span>
+                  <div class="news-meta"> 18 Oct 2025 </div>
+                </div>
+              </div>
+            </article>
+    
+            <article class="news-card" aria-labelledby="a4-title">
+              <div class="news-image" style="background-image:url('https://picsum.photos/id/4/600/300');"></div>
+              <div class="news-content">
+                <h3 id="a4-title">Queen Mary researchers among top 100 in UK</h3>
+                <div class="card-meta-row">
+                  <span class="badge research" aria-hidden="true">Research</span>
+                  <div class="news-meta"> 19 Oct 2025 </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="news-card" aria-labelledby="a5-title">
+              <div class="news-image" style="background-image:url('https://picsum.photos/id/5/600/300');"></div>
+              <div class="news-content">
+                <h3 id="a5-title">A guide to student life in East London</h3>
+                <div class="card-meta-row">
+                  <span class="badge jade" aria-hidden="true">Article</span>
+                  <div class="news-meta"> 15 Oct 2025 </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="news-card" aria-labelledby="a6-title">
+              <div class="news-image" style="background-image:url('https://picsum.photos/id/6/600/300');"></div>
+              <div class="news-content">
+                <h3 id="a6-title">My first month at Queen Mary</h3>
+                <div class="card-meta-row">
+                  <span class="badge blue" aria-hidden="true">Blog</span>
+                  <div class="news-meta"> 14 Oct 2025 </div>
+                </div>
+              </div>
+            </article>
+    
+          </div>
+    
+          <div class="pagination" role="navigation" aria-label="Pagination">
+            <button class="page-btn active" aria-current="page">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">Next →</button>
+          </div>
+        </section>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer class="footer slat slat--blue">
+    <div class="footer__container slat__container">
+      <div class="footer__section footer__top">
+        <div class="footer__group footer__group--full">
+          <ul class="footer__nav-links" aria-label="Footer links">
+            <li><a href="#">Accommodation</a></li>
+            <li><a href="#">Alumni</a></li>
+            <li><a href="#">Schools and Institutes</a></li>
+            <li><a href="#">Careers and Enterprise</a></li>
+            <li><a href="#">Collaborate with us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Global</a></li>
+            <li><a href="#">How to find us</a></li>
+            <li><a href="#">International students</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Library</a></li>
+            <li><a href="#">MyQMUL</a></li>
+            <li><a href="#">New students</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Order a prospectus</a></li>
+            <li><a href="#">Our brand</a></li>
+            <li><a href="#">Parents</a></li>
+            <li><a href="#">Professional Services departments</a></li>
+            <li><a href="#">Public Engagement</a></li>
+            <li><a href="#">QMplus</a></li>
+            <li><a href="#">Staff directory</a></li>
+            <li><a href="#">Staff intranet</a></li>
+            <li><a href="#">Strategy 2030</a></li>
+            <li><a href="#">Students' Union</a></li>
+            <li><a href="#">Teachers</a></li>
+            <li><a href="#">Term dates</a></li>
+            <li><a href="#">Trade Union Facility Time</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__section footer__bottom">
+        <div class="footer__groups">
+          <div class="footer__group footer__group--three-quarter">
+            <ul class="footer__nav-links">
+              <li><a href="#">Accessibility</a></li>
+              <li><a href="#">Disclaimer</a></li>
+              <li><a href="#">Privacy and cookies</a></li>
+              <li><a href="#">Site map</a></li>
+              <li><a href="#">Modern Slavery Statement</a></li>
+              <li><a href="#">Supplier fraud alert</a></li>
+              <li><a href="#">OFS Data</a></li>
+            </ul>
+          </div>
+          <div class="footer__group footer__group--quarter">
+            <h2 class="footer__title">Contact the university</h2>
+            <p>Queen Mary University of London<br>
+            Mile End Road<br>
+            London E1 4NS<br>
+            +44 (0) 20 7882 5555
+            </p>
+          
+            <ul class="social-list social-list--circled flex flex-wrap mt-2">
+              <li class="social-list__service mb-1">
+                <a href="#" class="social-list__service-link icon--blue">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" class="icon" viewBox="0 0 16 16"> <title>Facebook</title> <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"></path> </svg>
+                </a>
+              </li>
+              <li class="social-list__service mb-1">
+                <a href="#" class="social-list__service-link icon--blue">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="30" height="30" viewBox="0 0 16 16"> <title>Twitter X</title> <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"></path> </svg>
+                </a>
+              </li>
+              <li class="social-list__service mb-1">
+                <a href="#" class="social-list__service-link icon--blue">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16"> <title>Instagram</title> <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path> </svg>
+                </a>
+              </li>
+              <li class="social-list__service mb-1">
+                <a href="#" class="social-list__service-link icon--blue">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="icon" viewBox="0 0 16 16"> <title>YouTube</title> <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"></path> </svg>
+                </a>
+              </li>
+              <li class="social-list__service">
+                <a href="#" class="social-list__service-link icon--blue">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16"> <title>LinkedIn</title> <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"></path> </svg>
+                </a>
+              </li>
+              <li class="social-list__service">
+                <a href="#" class="social-list__service-link icon--blue">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 16 16"> <title>TikTok</title> <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"></path> </svg>
+                </a>
+              </li>
+            </ul>
+          </div> 	
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="btt" data-component="btt">
+    <div class="btt__inner">
+      <a href="#top" class="btt__link" data-role="link">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" viewBox="0 0 24 24">
+          <path d="M7 14l5-5 5 5H7z" fill="currentColor"/>
+        </svg>
+        <span class="vh">Back to top</span>
+      </a>
+    </div>
+  </div>
+  </body>
+</html>
