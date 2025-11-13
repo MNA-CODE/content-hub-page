@@ -123,7 +123,7 @@ img { display:block; max-width:100%; }
   margin-left: auto; 
   position: relative;
   z-index: 10;
-  transform: translateY(6rem); 
+  transform: translateY(6rem) translateX(-5rem);
 }
 .hero-image img {
   width: 100%;
