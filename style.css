@@ -123,14 +123,13 @@ img { display:block; max-width:100%; }
   margin-left: auto; 
   position: relative;
   z-index: 10;
-  transform: translateY(4rem); 
+  transform: translateY(6rem); 
 }
 .hero-image img {
   width: 100%;
   height: auto;
   max-height: 300px; 
   object-fit: cover; 
-  border-radius: 8px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
