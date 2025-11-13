@@ -94,7 +94,7 @@ img { display:block; max-width:100%; }
 /* --- END CUSTOM HEADER --- */
 
 /* --- CUSTOM HERO --- */
-.hero{background:var(--qmul-blue);color:#fff;padding:4rem 1.25rem}
+.hero{background:var(--qmul-blue);color:#fff;padding:4rem 1.25rem;}
 .hero-content{
   max-width:1400px;
   margin:0 auto;
