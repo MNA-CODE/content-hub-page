@@ -597,6 +597,7 @@ img { display:block; max-width:100%; }
   display: grid;
   grid-template-columns: 1fr; 
   gap: 2rem;
+  margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
   .grid-related {
