@@ -376,7 +376,7 @@ img { display:block; max-width:100%; }
   width: 1.15em; 
   height: 1.15em;
   border: 1px solid #85898f; 
-  border-radius: 0; /* Square */
+  border-radius: 2px; /* Curved */
   margin: 0;
   cursor: pointer;
   flex-shrink: 0;
