@@ -116,18 +116,18 @@ img { display:block; max-width:100%; }
 }
 .hero-text h1 {
   margin-bottom: 1.3333rem; 
-  padding-left: 20px;
+  padding-left: 45px;
 }
 .hero-text p{
   font-size:1rem;
   opacity:.95;
   margin-bottom: 1.7778rem; 
-  padding-left: 20px;
+  padding-left: 45px;
 }
 
 .hero-image {
   width: 598px; 
-  height: 480px; 
+  height: 440px; 
   margin-left: auto; 
   position: relative;
   z-index: 10;
@@ -151,7 +151,7 @@ img { display:block; max-width:100%; }
   border: 0; 
   box-shadow: none; 
   margin: 0;
-  padding-left: 20px;
+  padding-left: 45px;
 }
 .search-box input{
   flex:1;
@@ -306,7 +306,7 @@ img { display:block; max-width:100%; }
   letter-spacing: -.02em;
   line-height: 1.55;
   font-weight: 400; /* Lighter font weight */
-  padding: 10px 15px; /* Compact padding */
+  padding: 18px 15px; /* Compact padding */
   position: relative;
   background: #fff;
   color: var(--filter-label-color); /* Dark text */
@@ -365,7 +365,7 @@ img { display:block; max-width:100%; }
 /* This is an individual filter item */
 .facet-list .collapse .dropdown-item {
   margin-bottom: .25rem;
-  padding: .5rem 1rem;
+  padding: .5rem 0.2rem;
   display: flex;
   align-items: flex-start; 
   gap: .75rem;
@@ -382,6 +382,7 @@ img { display:block; max-width:100%; }
   flex-shrink: 0;
   position: relative;
   top: 0.15em; 
+  background-color: white;
 }
 .facet-list .collapse .dropdown-item input[type="checkbox"]:checked {
   background-color: var(--qmul-blue);
@@ -550,8 +551,7 @@ img { display:block; max-width:100%; }
 }
 .card-type-event .news-meta {
   border-top: none;
-  background-color: var(--qmul-purple);
-  color: #fff;
+  color: var(--qmul-grey-900);
   font-weight: 600; 
   padding: 0.3rem 0.6rem;
   border-radius: 4px;
