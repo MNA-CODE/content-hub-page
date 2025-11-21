@@ -100,7 +100,7 @@ img { display:block; max-width:100%; }
 /* --- END CUSTOM HEADER --- */
 
 /* --- CUSTOM HERO --- */
-.hero{background:var(--qmul-blue);color:#fff;padding:2.5rem 1.25rem 4rem;}
+.hero{background:var(--qmul-blue);color:#fff;}
 .hero-content{
   max-width:1400px;
   margin:0 auto;
@@ -131,7 +131,7 @@ img { display:block; max-width:100%; }
   margin-left: auto; 
   position: relative;
   z-index: 10;
-  transform: translateY(6rem) translateX(-2rem); 
+  transform: translateY(3rem) translateX(-2rem); 
   box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   overflow: hidden; 
 }
@@ -302,7 +302,7 @@ img { display:block; max-width:100%; }
 .facet-list .sidebar-heading summary {
   text-align: left;
   border: 1px solid var(--filter-border-color); /* Dark purple */
-  font-size: 1.1rem; 
+  font-size: 1rem; 
   letter-spacing: -.02em;
   line-height: 1.55;
   font-weight: 400; /* Lighter font weight */
@@ -343,7 +343,6 @@ img { display:block; max-width:100%; }
   background-color: var(--filter-list-bg); /* light grey bg */
   position: relative;
   display: block;
-  border: 1px solid var(--filter-border-color);
   border-top: none;
   padding: .625rem 0;
   box-shadow: none;
@@ -391,7 +390,7 @@ img { display:block; max-width:100%; }
   background-size: 100%;
 }
 .facet-list .collapse .dropdown-item label {
-  font-size: 1rem; 
+  font-size: 0.875rem; 
   font-weight: 500;
   color: var(--qmul-grey-900);
   cursor: pointer;
@@ -559,7 +558,7 @@ img { display:block; max-width:100%; }
   text-align: center;
   margin-top: 0; 
   order: 2; 
-  width: 100%; 
+  
 }
 .card-type-event h3 {
   order: 1; 
