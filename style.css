@@ -365,7 +365,7 @@ img { display:block; max-width:100%; }
 /* This is an individual filter item */
 .facet-list .collapse .dropdown-item {
   margin-bottom: .25rem;
-  padding: .5rem 0.2rem;
+  padding: .2rem 0.2rem;
   display: flex;
   align-items: flex-start; 
   gap: .75rem;
@@ -376,7 +376,7 @@ img { display:block; max-width:100%; }
   width: 1.15em; 
   height: 1.15em;
   border: 1px solid #85898f; 
-  border-radius: 2px; /* Curved */
+  border-radius: 2px; /* Square */
   margin: 0;
   cursor: pointer;
   flex-shrink: 0;
