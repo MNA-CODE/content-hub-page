@@ -316,12 +316,12 @@ img { display:block; max-width:100%; }
   color: #fff;
   border-color: transparent; 
 }
-.badge.jade{background:var(--qmul-jade)} 
-.badge.purple{background:var(--qmul-purple)}
-.badge.orange{background:var(--qmul-orange)} 
-.badge.news{background:var(--qmul-blue)} 
-.badge.research{background:var(--qmul-jade)}
-.badge.blue{background:var(--qmul-blue)} 
+.badge.jade{background: #0C746A;} 
+.badge.purple{background:#7B0E72;}
+.badge.orange{background:#D35D0C;} 
+.badge.news{background:#21376A;} 
+.badge.research{background: #0C746A;}
+.badge.blue{background:#21376A;} 
 
 
 /* --- NEW MAIN LAYOUT --- */
@@ -634,7 +634,7 @@ img { display:block; max-width:100%; }
   background-color: var(--qmul-grey-700); 
 }
 .news-content h3 {
-  color: #21376A; 
+  color: #0c746a; 
   text-decoration: none;
   order: 1; 
   font-size: 1.1rem;
