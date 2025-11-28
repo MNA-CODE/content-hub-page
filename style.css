@@ -9,13 +9,13 @@
   --qmul-grey-700: #f6f6f6; 
   --qmul-grey-900:#212529;
   
-  /* Filter colors */
+
   --filter-border-color: #2F2552; 
   --filter-label-color: #33475a; 
   --filter-list-bg: #f1f1f6;     
 }
 
-/* reset / base */
+
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%; scroll-behavior: smooth;} 
 
@@ -388,7 +388,7 @@ img { display:block; max-width:100%; }
   text-align: center; 
 }
 
-/* FIX: Filter styles matching Screenshot ...11.50.53.png */
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
@@ -795,7 +795,6 @@ img { display:block; max-width:100%; }
 .related-card__image {
   width: 100%;
   position: relative;
-  /* Ratio calculation: 350 / 525 = 66.66% */
   padding-bottom: 66.66%; 
   background: #fff; 
   flex-shrink: 0;
